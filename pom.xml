@@ -7,7 +7,15 @@
   <version>3.0-SNAPSHOT</version>
   <name>01-maven-web-app</name>
   <url>http://maven.apache.org</url>
- 
+
+  <properties>
+    <junit.version>4.11</junit.version>
+    <sonar.host.url>http://16.51.62.158:9000/</sonar.host.url>
+		<sonar.login>squ_4d0b59a31ed121cd2d2df904a2e06f1fc17b3bf7</sonar.login>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -15,6 +23,23 @@
       <version>3.8.1</version>
     </dependency>
   </dependencies>
+  
+   <distributionManagement>
+	
+	    <repository>
+	      <id>nexus</id>
+	      <name>bank Releases Nexus Repository</name>
+	      <url>http://16.50.228.6:8081/repository/bank-Release/</url>
+	    </repository>
+	    
+	    <snapshotRepository>
+	      <id>nexus</id>
+	      <name>bank Snapshot Nexus Repository</name>
+	      <url>http://16.50.228.6:8081/repository/bank-Snapshot/</url>
+	    </snapshotRepository>
+	    
+	</distributionManagement>
+  
   <build>
     <finalName>01-maven-web-app</finalName>
     <plugins>
@@ -23,6 +48,18 @@
         <artifactId>maven-war-plugin</artifactId>
         <version>3.3.1</version>
       </plugin>
+      
+      <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				     <configuration>
+				       	<downloadSources>true</downloadSources>
+				      	<downloadJavadocs>true</downloadJavadocs>
+					      <wtpversion>2.0</wtpversion>
+					      <wtpContextName>maven-web-application</wtpContextName>
+				</configuration>
+			</plugin>
     </plugins>
   </build>
 </project>
